@@ -1,0 +1,7 @@
+@use "./globals/styles/variables.scss" as var;
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var.$font-family;
+}

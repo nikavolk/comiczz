@@ -1,10 +1,10 @@
-import React from "react";
-import "./App.css";
+import { Button } from "./components/Button";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Hello world</h1>
+      <Button type="submit">Hello</Button>
     </div>
   );
 }

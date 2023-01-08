@@ -1,0 +1,18 @@
+@use "../../globals/styles/functions.scss" as func;
+@use "../../globals/styles/variables.scss" as var;
+
+button {
+  color: var.$background-color;
+  font-size: func.toRem(17);
+  border-radius: func.toRem(5);
+  border: 0;
+  width: func.toRem(140);
+  height: func.toRem(35);
+  background-color: var.$link-color;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3.2px 7.2px 0 rgb(0 0 0 / 13%),
+      0 0.6px 1.8px 0 rgb(0 0 0 / 11%);
+  }
+}
