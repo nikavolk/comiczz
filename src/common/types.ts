@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps } from "react";
+import React, { DetailedHTMLProps, Dispatch, SetStateAction } from "react";
 
 export interface Data {
   id: number;
@@ -21,7 +21,10 @@ export type ButtonProps = DetailedHTMLProps<
   HTMLButtonElement
 >;
 
-export interface HeaderProps {}
+export interface HeaderProps {
+  setFilter: Dispatch<SetStateAction<string>>;
+  setOffset: Dispatch<SetStateAction<number>>;
+}
 
 export interface CardListProps {
   data: Data[];
@@ -43,3 +46,7 @@ export interface SelectedComicData {
 }
 
 export interface DetailsCard {}
+
+export interface FilterState {
+  filter: string | null;
+}
