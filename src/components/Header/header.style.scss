@@ -1,21 +1,43 @@
 @use "../../globals/styles/functions.scss" as func;
 @use "../../globals/styles/variables.scss" as var;
+@use "../../globals/styles/mixins.scss" as mix;
 
 .header {
   display: flex;
-  background-color: var.$foreground-color;
   height: func.toRem(112);
-  padding: 0 20%;
+  background-color: var.$foreground-color;
+
+  @include mix.phone {
+    height: fit-content;
+    justify-content: center;
+  }
 }
 
 .header__container {
+  margin: 0 auto;
   display: flex;
   gap: func.toRem(60);
+  background-color: var.$foreground-color;
+  width: func.toRem(1670);
+
+  @include mix.phone {
+    display: block;
+    text-align: center;
+  }
+
+  @include mix.tablet-up {
+    padding: 0 func.toRem(15);
+  }
 }
 
 .header__container__logo {
   display: flex;
   align-items: center;
+
+  @include mix.phone {
+    padding-top: func.toRem(20);
+    justify-content: center;
+  }
 }
 
 .header__container__logo-img {
@@ -28,7 +50,18 @@
   padding: 0;
   display: flex;
   align-items: center;
-  gap: func.toRem(81);
+
+  @include mix.phone {
+    display: block;
+  }
+
+  @include mix.tablet-up {
+    gap: func.toRem(35);
+  }
+
+  @include mix.desktop-up {
+    gap: func.toRem(81);
+  }
 }
 
 .header__container__navigation-li {
@@ -39,5 +72,9 @@
 
   &:hover {
     color: var.$link-color;
+  }
+
+  @include mix.phone {
+    padding: func.toRem(8);
   }
 }

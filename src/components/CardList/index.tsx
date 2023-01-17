@@ -1,6 +1,7 @@
 import { CardListProps } from "../../common/types";
 import Card from "../Card";
 import InfiniteScroll from "react-infinite-scroll-component";
+import "./CardList.style.scss";
 
 const CardList = ({
   data,
@@ -19,7 +20,7 @@ const CardList = ({
         </p>
       }
     >
-      <div>
+      <div className="main-wrapper__list">
         {data.length
           ? data.map((comic) => (
               <Card

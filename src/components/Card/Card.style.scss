@@ -1,0 +1,19 @@
+@use "../../globals/styles/functions.scss" as func;
+@use "../../globals/styles/variables.scss" as var;
+
+.card-container {
+  width: func.toRem(207);
+  height: func.toRem(395);
+  border: func.toRem(2) solid var.$card-border-color;
+  border-radius: func.toRem(5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: func.toRem(10) func.toRem(13);
+}
+
+.card-container__price {
+  font-size: func.toRem(19);
+  font-weight: bold;
+}

@@ -59,7 +59,7 @@ function App() {
         setOffset={setOffset}
         setBreadcrumb={setBreadcrumb}
       />
-      <div className="main-wrapper">
+      <main className="main-wrapper">
         <Breadcrumbs breadcrumb={breadcrumb} />
         <CardList
           data={comicsData}
@@ -72,7 +72,7 @@ function App() {
             setSelectedComic={setSelectedComic}
           />
         )}
-      </div>
+      </main>
     </>
   );
 }

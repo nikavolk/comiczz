@@ -1,0 +1,19 @@
+@use "../../globals/styles/functions.scss" as func;
+@use "../../globals/styles/variables.scss" as var;
+@use "../../globals/styles/mixins.scss" as mix;
+
+.breadcrumbs {
+  padding: func.toRem(25) func.toRem(10) func.toRem(19) func.toRem(10);
+  font-size: func.toRem(18);
+  font-weight: bold;
+  color: var.$breadcrumb-color;
+  cursor: default;
+
+  @include mix.tablet-up {
+    padding: func.toRem(25) func.toRem(15) func.toRem(19) func.toRem(15);
+  }
+
+  @include mix.desktop-large-up {
+    padding: func.toRem(25) 0 func.toRem(19) 0;
+  }
+}

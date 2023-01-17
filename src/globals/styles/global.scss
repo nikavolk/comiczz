@@ -1,7 +1,14 @@
 @use "./variables.scss" as var;
+@use "./functions.scss" as func;
+@use "./imports.scss";
 
 body {
   padding: 0;
   margin: 0;
   font-family: var.$font-family;
+}
+
+h1 {
+  font-size: func.toRem(15);
+  text-align: center;
 }

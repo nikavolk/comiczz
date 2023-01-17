@@ -1,0 +1,15 @@
+@use "../../globals/styles/functions.scss" as func;
+@use "../../globals/styles/variables.scss" as var;
+@use "../../globals/styles/mixins.scss" as mix;
+
+.main-wrapper__list {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: func.toRem(18);
+  padding: 0 func.toRem(40);
+
+  @include mix.phone {
+    padding: 0 func.toRem(10);
+    grid-gap: func.toRem(5);
+  }
+}

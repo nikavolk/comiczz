@@ -1,0 +1,8 @@
+@use "./globals/styles/functions.scss" as func;
+@use "./globals/styles/variables.scss" as var;
+@use "./globals/styles/mixins.scss" as mix;
+
+.main-wrapper {
+  margin: 0 auto;
+  max-width: func.toRem(1670);
+}
