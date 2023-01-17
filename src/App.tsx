@@ -4,6 +4,7 @@ import CardList from "./components/CardList";
 import { ComicsData } from "./common/types";
 import DetailsCard from "./components/DetailsCard";
 import Breadcrumbs from "./components/Breadcrumbs";
+import "./App.style.scss";
 
 function App() {
   const [comicsData, setComicsData] = useState<ComicsData[]>([]);
@@ -52,25 +53,27 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Header
         setFilter={setFilter}
         setOffset={setOffset}
         setBreadcrumb={setBreadcrumb}
       />
-      <Breadcrumbs breadcrumb={breadcrumb} />
-      <CardList
-        data={comicsData}
-        loadMore={loadMore}
-        setSelectedComic={setSelectedComic}
-      />
-      {selectedComic > 0 && (
-        <DetailsCard
-          selectedComic={selectedComic}
+      <div className="main-wrapper">
+        <Breadcrumbs breadcrumb={breadcrumb} />
+        <CardList
+          data={comicsData}
+          loadMore={loadMore}
           setSelectedComic={setSelectedComic}
         />
-      )}
-    </div>
+        {selectedComic > 0 && (
+          <DetailsCard
+            selectedComic={selectedComic}
+            setSelectedComic={setSelectedComic}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

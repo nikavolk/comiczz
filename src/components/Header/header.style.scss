@@ -1,2 +1,43 @@
 @use "../../globals/styles/functions.scss" as func;
 @use "../../globals/styles/variables.scss" as var;
+
+.header {
+  display: flex;
+  background-color: var.$foreground-color;
+  height: func.toRem(112);
+  padding: 0 20%;
+}
+
+.header__container {
+  display: flex;
+  gap: func.toRem(60);
+}
+
+.header__container__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__container__logo-img {
+  width: func.toRem(84);
+  height: func.toRem(72);
+}
+
+.header__container__navigation-ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: func.toRem(81);
+}
+
+.header__container__navigation-li {
+  color: var.$background-color;
+  font-weight: bold;
+  font-size: func.toRem(18);
+  cursor: pointer;
+
+  &:hover {
+    color: var.$link-color;
+  }
+}

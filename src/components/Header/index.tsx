@@ -1,6 +1,7 @@
 import { HeaderProps } from "../../common/types";
 import { Button } from "../Button";
 import "./header.style.scss";
+import logo from "../../globals/assets/logo2.svg";
 
 const Header = ({
   setFilter,
@@ -17,42 +18,50 @@ const Header = ({
   };
 
   return (
-    <header>
-      <div>logo</div>
-      <nav>
-        <Button
-          onClick={() => {
-            handleClick("all");
-            setBreadcrumb("");
-          }}
-        >
-          All
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("format=comic&");
-            setBreadcrumb("Comics");
-          }}
-        >
-          Comic
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("format=magazine&");
-            setBreadcrumb("Magazines");
-          }}
-        >
-          Magazine
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("format=digital%20comic&");
-            setBreadcrumb("Digital comics");
-          }}
-        >
-          Digital comic
-        </Button>
-      </nav>
+    <header className="header">
+      <div className="header__container">
+        <div className="header__container__logo">
+          <img src={logo} alt="Whoosh logo" className="header__logo-img" />
+        </div>
+        <ul role="navigation" className="header__container__navigation-ul">
+          <li
+            className="header__container__navigation-li"
+            onClick={() => {
+              handleClick("all");
+              setBreadcrumb("");
+            }}
+          >
+            All
+          </li>
+          <li
+            className="header__container__navigation-li"
+            onClick={() => {
+              handleClick("format=comic&");
+              setBreadcrumb("Comics");
+            }}
+          >
+            Comic
+          </li>
+          <li
+            className="header__container__navigation-li"
+            onClick={() => {
+              handleClick("format=magazine&");
+              setBreadcrumb("Magazines");
+            }}
+          >
+            Magazine
+          </li>
+          <li
+            className="header__container__navigation-li"
+            onClick={() => {
+              handleClick("format=digital%20comic&");
+              setBreadcrumb("Digital comics");
+            }}
+          >
+            Digital comic
+          </li>
+        </ul>
+      </div>
     </header>
   );
 };
