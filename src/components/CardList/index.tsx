@@ -13,7 +13,7 @@ const CardList = ({
       dataLength={data.length} //This is important field to render the next data
       next={loadMore}
       hasMore={true}
-      loader={<h4>Loading...</h4>}
+      loader={<h3>Loading...</h3>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>No more entries</b>

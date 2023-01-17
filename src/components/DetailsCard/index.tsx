@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ComicData, DetailsCardProps } from "../../common/types";
 import { Button } from "../Button";
+import "./DetailsCard.style.scss";
 
 const DetailsCard = ({
   selectedComic,
@@ -43,54 +44,81 @@ const DetailsCard = ({
   let date = new Date(comicData.dates[1].date);
   let year = date.getFullYear();
 
-  console.log("details card ", comicData);
+  if (loading) {
+    return (
+      <div className="details-card-background">
+        <div className="details-card-container">
+          <div className=".details-card-container__content">bbb</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <div>
-        <img
-          src={`${comicData.thumbnail.path}.${comicData.thumbnail.extension}`}
-          alt={`${comicData.title} cover art`}
-        />
+    <div className="details-card-background">
+      <div className="details-card-container">
+        <div
+          onClick={() => setSelectedComic(0)}
+          className="details-card-container__btn-close"
+        >
+          X
+        </div>
+        <div>
+          <img
+            src={`${comicData.thumbnail.path}/portrait_fantastic.${comicData.thumbnail.extension}`}
+            alt={`${comicData.title} cover art`}
+          />
+        </div>
+        <div className="details-card-container__content">
+          <h2>{comicData.title}</h2>
+          <ul className="details-card-container__content-ul">
+            <li className="details-card-container__content-li">
+              <span>Year of release:</span> {year ? year : "N/A"}
+            </li>
+
+            <li className="details-card-container__content-li">
+              <span>Format:</span> {comicData.format}
+            </li>
+
+            <li className="details-card-container__content-li">
+              <span>Pages:</span>{" "}
+              {comicData.pageCount === 0 ? "N/A" : comicData.pageCount}
+            </li>
+            <li className="details-card-container__content-li">
+              <span>Characters:</span>{" "}
+              {comicData.characters.items.length
+                ? comicData.characters.items.map((char, index) => {
+                    if (index === comicData.characters.items.length - 1) {
+                      return char.name;
+                    } else {
+                      return char.name + ", ";
+                    }
+                  })
+                : "N/A"}
+            </li>
+            <li className="details-card-container__content-li">
+              <span>Creators:</span>{" "}
+              {comicData.creators.items.length
+                ? comicData.creators.items.map((creator, index) => {
+                    if (index === comicData.creators.items.length - 1) {
+                      return creator.name;
+                    } else {
+                      return creator.name + ", ";
+                    }
+                  })
+                : "N/A"}
+            </li>
+            <li className="details-card-container__content-li">
+              <span>DiamondCode:</span>{" "}
+              {comicData.diamondCode.length > 0 ? comicData.diamondCode : "N/A"}
+            </li>
+          </ul>{" "}
+          <div className="details-card-container__content__misc">
+            <span>{comicData.prices[0].price} €</span>
+            <Button onClick={() => setSelectedComic(0)}>Close</Button>
+          </div>
+        </div>
       </div>
-      <div>{comicData.title}</div>
-      <ul>
-        <li>Year of release: {year ? year : "N/A"}</li>
-        <li>Format: {comicData.format}</li>
-        <li>
-          Pages: {comicData.pageCount === 0 ? "N/A" : comicData.pageCount}
-        </li>
-        <li>
-          Characters:{" "}
-          {comicData.characters.items.length
-            ? comicData.characters.items.map((char, index) => {
-                if (index === comicData.characters.items.length - 1) {
-                  return char.name;
-                } else {
-                  return char.name + ", ";
-                }
-              })
-            : "N/A"}
-        </li>
-        <li>
-          Creators:{" "}
-          {comicData.creators.items.length
-            ? comicData.creators.items.map((creator, index) => {
-                if (index === comicData.creators.items.length - 1) {
-                  return creator.name;
-                } else {
-                  return creator.name + ", ";
-                }
-              })
-            : "N/A"}
-        </li>
-        <li>
-          DiamondCode:{" "}
-          {comicData.diamondCode.length > 0 ? comicData.diamondCode : "N/A"}
-        </li>
-        <div>{comicData.prices[0].price} €</div>
-      </ul>
-      <Button onClick={() => setSelectedComic(0)}>Close</Button>
     </div>
   );
 };

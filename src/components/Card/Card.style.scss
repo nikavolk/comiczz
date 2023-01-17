@@ -3,7 +3,7 @@
 
 .card-container {
   width: func.toRem(207);
-  height: func.toRem(395);
+  height: func.toRem(415);
   border: func.toRem(2) solid var.$card-border-color;
   border-radius: func.toRem(5);
   display: flex;
@@ -13,7 +13,16 @@
   padding: func.toRem(10) func.toRem(13);
 }
 
-.card-container__price {
+.card-container__img-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-container__price-btn__price {
+  text-align: center;
   font-size: func.toRem(19);
   font-weight: bold;
+  padding: 0 func.toRem(0) func.toRem(9) 0;
+  height: fit-content;
 }

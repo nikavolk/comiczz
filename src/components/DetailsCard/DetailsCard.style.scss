@@ -1,0 +1,71 @@
+@use "../../globals/styles/functions.scss" as func;
+@use "../../globals/styles/variables.scss" as var;
+@use "../../globals/styles/mixins.scss" as mix;
+
+.details-card-background {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.details-card-container {
+  display: flex;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: func.toRem(643);
+  height: max-content;
+  background-color: var.$background-color;
+  border: 1px solid var.$card-border-color;
+  border-radius: func.toRem(5);
+  padding: func.toRem(12);
+}
+
+.details-card-container__btn-close {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  position: absolute;
+  top: 5px;
+  right: 7.5px;
+  color: var.$link-color;
+  font-size: func.toRem(21);
+  cursor: pointer;
+}
+
+.details-card-container__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: func.toRem(17);
+}
+
+.details-card-container__content-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.details-card-container__content-li {
+  font-size: func.toRem(15);
+  padding: func.toRem(4) 0;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.details-card-container__content__misc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: func.toRem(19);
+    font-weight: bold;
+  }
+}
