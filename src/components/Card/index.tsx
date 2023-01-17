@@ -12,7 +12,10 @@ const Card = ({
   return (
     <article>
       <div>
-        <img src={`${thumbnail}.${extension}`} alt={`${title} cover art`} />
+        <img
+          src={`${thumbnail}/portrait_fantastic.${extension}`}
+          alt={`${title} cover art`}
+        />
       </div>
       <div>{title}</div>
       <div>{price === 0 ? "N/A" : `${price}€`}</div>

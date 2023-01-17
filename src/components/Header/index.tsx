@@ -50,7 +50,7 @@ const Header = ({
             setBreadcrumb("Digital comics");
           }}
         >
-          Digital Comic
+          Digital comic
         </Button>
       </nav>
     </header>

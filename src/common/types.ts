@@ -43,7 +43,6 @@ export interface HeaderProps {
 export interface CardListProps {
   data: ComicsData[];
   loadMore: () => void;
-  isLoading: boolean;
   setSelectedComic: Dispatch<SetStateAction<number>>;
 }
 

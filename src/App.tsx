@@ -7,7 +7,6 @@ import Breadcrumbs from "./components/Breadcrumbs";
 
 function App() {
   const [comicsData, setComicsData] = useState<ComicsData[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [filter, setFilter] = useState("");
   const [selectedComic, setSelectedComic] = useState(0);
@@ -16,8 +15,6 @@ function App() {
   // fetches list of comics and reloads when filter changes
   useEffect(() => {
     const fetchComicsData = async () => {
-      setIsLoading(true);
-
       const response = await fetch(
         `https://gateway.marvel.com:443/v1/public/comics?${
           filter && filter
@@ -26,8 +23,6 @@ function App() {
       const data = await response.json();
 
       setComicsData(data.data.results);
-
-      setIsLoading(false);
     };
 
     fetchComicsData();
@@ -38,8 +33,6 @@ function App() {
 
   useEffect(() => {
     const fetchComicsData = async () => {
-      setIsLoading(true);
-
       const response = await fetch(
         `https://gateway.marvel.com:443/v1/public/comics?${
           filter && filter
@@ -48,8 +41,6 @@ function App() {
       const data = await response.json();
 
       setComicsData([...comicsData, ...data.data.results]);
-
-      setIsLoading(false);
     };
 
     fetchComicsData();
@@ -57,9 +48,7 @@ function App() {
 
   // load more function increments offset parameter for API call
   const loadMore = async () => {
-    setIsLoading(true);
     setOffset(offset + 20);
-    setIsLoading(false);
   };
 
   return (
@@ -71,7 +60,6 @@ function App() {
       />
       <Breadcrumbs breadcrumb={breadcrumb} />
       <CardList
-        isLoading={isLoading}
         data={comicsData}
         loadMore={loadMore}
         setSelectedComic={setSelectedComic}

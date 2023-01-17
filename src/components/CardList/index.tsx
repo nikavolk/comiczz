@@ -1,33 +1,40 @@
 import { CardListProps } from "../../common/types";
 import Card from "../Card";
-import { Button } from "../Button";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const CardList = ({
-  isLoading,
   data,
   loadMore,
   setSelectedComic,
 }: CardListProps): JSX.Element => {
   return (
-    <div>
-      {data.length
-        ? data.map((comic) => (
-            <Card
-              id={comic.id}
-              key={comic.id}
-              thumbnail={comic.thumbnail.path}
-              extension={comic.thumbnail.extension}
-              title={comic.title}
-              price={comic.prices[0].price}
-              setSelectedComic={setSelectedComic}
-            />
-          ))
-        : null}
+    <InfiniteScroll
+      dataLength={data.length} //This is important field to render the next data
+      next={loadMore}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}
+      endMessage={
+        <p style={{ textAlign: "center" }}>
+          <b>No more entries</b>
+        </p>
+      }
+    >
       <div>
-        <Button onClick={loadMore}>Load More</Button>
+        {data.length
+          ? data.map((comic) => (
+              <Card
+                id={comic.id}
+                key={comic.id}
+                thumbnail={comic.thumbnail.path}
+                extension={comic.thumbnail.extension}
+                title={comic.title}
+                price={comic.prices[0].price}
+                setSelectedComic={setSelectedComic}
+              />
+            ))
+          : null}
       </div>
-      {isLoading && <div>Loading...</div>}
-    </div>
+    </InfiniteScroll>
   );
 };
 
