@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+## Author
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nika Volk
 
-## Available Scripts
+## Failed to implement
 
-In the project directory, you can run:
+None (I think)
 
-### `npm start`
+## Issues faced
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Not having used Typescript too often before, I've run across some issues
+with typing data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I also attempted implementing an infinite scroll using
+useEffect and scroll, as well as the Intersection Observer, and ended up
+settling on using the react-infinite-scroll library.
 
-### `npm test`
+I was planning on using different branches on git first, however given
+it's a smaller application, I decided to stay on the main branch and work
+off it.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I'm also uncertain as to why there are duplicate entries when loading more
+data, whether it's due to the API, or there is something wrong with how the
+states and data have been handled.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Many comic entries are also missing much of different data (prices, dates, etc),
+so I had to resort to showing "N/A" when data isn't provided.
