@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import CardList from "./components/CardList";
-import { Data, FilterState } from "./common/types";
+import { ComicsData } from "./common/types";
+import DetailsCard from "./components/DetailsCard";
 
 function App() {
-  const [comicsData, setComicsData] = useState<Data[]>([]);
+  const [comicsData, setComicsData] = useState<ComicsData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [filter, setFilter] = useState("");
+  const [selectedComic, setSelectedComic] = useState(0);
 
-  // fetches list of comics
+  // fetches list of comics and reloads when filter changes
   useEffect(() => {
     const fetchComicsData = async () => {
       setIsLoading(true);
@@ -21,7 +23,6 @@ function App() {
       );
       const data = await response.json();
 
-      //setComicsData([...comicsData, ...data.data.results]);
       setComicsData(data.data.results);
 
       setIsLoading(false);
@@ -29,6 +30,9 @@ function App() {
 
     fetchComicsData();
   }, [filter]);
+
+  // fetches a list of comics with an optional filter, loads data
+  // on every offset state update and updates comics data with new data
 
   useEffect(() => {
     const fetchComicsData = async () => {
@@ -49,20 +53,28 @@ function App() {
     fetchComicsData();
   }, [offset]);
 
+  // load more function increments offset parameter for API call
   const loadMore = async () => {
     setIsLoading(true);
     setOffset(offset + 20);
     setIsLoading(false);
   };
 
-  console.log(comicsData);
-
   return (
     <div>
-      <header>
-        <Header setFilter={setFilter} setOffset={setOffset} />
-      </header>
-      <CardList isLoading={isLoading} data={comicsData} loadMore={loadMore} />
+      <Header setFilter={setFilter} setOffset={setOffset} />
+      <CardList
+        isLoading={isLoading}
+        data={comicsData}
+        loadMore={loadMore}
+        setSelectedComic={setSelectedComic}
+      />
+      {selectedComic > 0 && (
+        <DetailsCard
+          selectedComic={selectedComic}
+          setSelectedComic={setSelectedComic}
+        />
+      )}
     </div>
   );
 }

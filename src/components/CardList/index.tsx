@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CardListProps } from "../../common/types";
 import Card from "../Card";
 import { Button } from "../Button";
@@ -7,9 +6,8 @@ const CardList = ({
   isLoading,
   data,
   loadMore,
+  setSelectedComic,
 }: CardListProps): JSX.Element => {
-  const [onMoreInfoClick] = useState<(comic: number) => void>(() => {});
-
   return (
     <div>
       {data.length
@@ -21,7 +19,7 @@ const CardList = ({
               extension={comic.thumbnail.extension}
               title={comic.title}
               price={comic.prices[0].price}
-              onMoreInfoClick={onMoreInfoClick}
+              setSelectedComic={setSelectedComic}
             />
           ))
         : null}

@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, Dispatch, SetStateAction } from "react";
 
-export interface Data {
+export interface ComicsData {
   id: number;
   thumbnail: {
     path: string;
@@ -8,12 +8,25 @@ export interface Data {
   };
   title: string;
   prices: [{ price: number }];
-  releaseDate: string;
+}
+
+export interface ComicData {
+  title: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  dates: [{ date: string }, { date: string }];
   format: string;
-  pages: string;
-  characters?: string;
-  creators: string;
+  pageCount: number;
+  characters: {
+    items: [{ name: string }];
+  };
+  creators: {
+    items: [{ name: string }];
+  };
   diamondCode: string;
+  prices: [{ price: number }];
 }
 
 export type ButtonProps = DetailedHTMLProps<
@@ -27,9 +40,10 @@ export interface HeaderProps {
 }
 
 export interface CardListProps {
-  data: Data[];
+  data: ComicsData[];
   loadMore: () => void;
   isLoading: boolean;
+  setSelectedComic: Dispatch<SetStateAction<number>>;
 }
 
 export interface CardProps {
@@ -38,15 +52,10 @@ export interface CardProps {
   title: string;
   price: number;
   extension: string;
-  onMoreInfoClick: (comic: number) => void;
+  setSelectedComic: Dispatch<SetStateAction<number>>;
 }
 
-export interface SelectedComicData {
-  id: number;
-}
-
-export interface DetailsCard {}
-
-export interface FilterState {
-  filter: string | null;
+export interface DetailsCardProps {
+  selectedComic: number;
+  setSelectedComic: Dispatch<SetStateAction<number>>;
 }

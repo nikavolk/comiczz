@@ -1,0 +1,11 @@
+@use "./variables.scss" as var;
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var.$font-family;
+}
+
+header {
+  display: flex;
+}
