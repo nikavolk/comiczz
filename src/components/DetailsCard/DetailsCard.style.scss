@@ -24,6 +24,10 @@
   border: 1px solid var.$card-border-color;
   border-radius: func.toRem(5);
   padding: func.toRem(12);
+
+  @include mix.phone {
+    width: 85%;
+  }
 }
 
 .details-card-container__btn-close {
