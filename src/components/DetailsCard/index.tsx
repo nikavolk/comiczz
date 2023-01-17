@@ -48,7 +48,7 @@ const DetailsCard = ({
     return (
       <div className="details-card-background">
         <div className="details-card-container">
-          <div className=".details-card-container__content">bbb</div>
+          <div className=".details-card-container__content">Loading</div>
         </div>
       </div>
     );
