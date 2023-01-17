@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import CardList from "./components/CardList";
 import { ComicsData } from "./common/types";
 import DetailsCard from "./components/DetailsCard";
+import Breadcrumbs from "./components/Breadcrumbs";
 
 function App() {
   const [comicsData, setComicsData] = useState<ComicsData[]>([]);
@@ -10,6 +11,7 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [filter, setFilter] = useState("");
   const [selectedComic, setSelectedComic] = useState(0);
+  const [breadcrumb, setBreadcrumb] = useState("");
 
   // fetches list of comics and reloads when filter changes
   useEffect(() => {
@@ -62,7 +64,12 @@ function App() {
 
   return (
     <div>
-      <Header setFilter={setFilter} setOffset={setOffset} />
+      <Header
+        setFilter={setFilter}
+        setOffset={setOffset}
+        setBreadcrumb={setBreadcrumb}
+      />
+      <Breadcrumbs breadcrumb={breadcrumb} />
       <CardList
         isLoading={isLoading}
         data={comicsData}

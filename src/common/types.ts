@@ -37,6 +37,7 @@ export type ButtonProps = DetailedHTMLProps<
 export interface HeaderProps {
   setFilter: Dispatch<SetStateAction<string>>;
   setOffset: Dispatch<SetStateAction<number>>;
+  setBreadcrumb: Dispatch<SetStateAction<string>>;
 }
 
 export interface CardListProps {
@@ -58,4 +59,8 @@ export interface CardProps {
 export interface DetailsCardProps {
   selectedComic: number;
   setSelectedComic: Dispatch<SetStateAction<number>>;
+}
+
+export interface BreadcrumbsProps {
+  breadcrumb: string;
 }
