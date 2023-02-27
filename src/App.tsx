@@ -33,18 +33,19 @@ function App() {
   // on every offset state update and updates comics data with new data
 
   useEffect(() => {
-    const fetchComicsData = async () => {
-      const response = await fetch(
-        `https://gateway.marvel.com:443/v1/public/comics?${
-          filter && filter
-        }limit=20&offset=${offset}&apikey=${process.env.REACT_APP_API_KEY}`,
-      );
-      const data = await response.json();
+    if (filter) {
+      const fetchComicsData = async () => {
+        const response = await fetch(
+          `https://gateway.marvel.com:443/v1/public/comics?${
+            filter && filter
+          }limit=20&offset=${offset}&apikey=${process.env.REACT_APP_API_KEY}`,
+        );
+        const data = await response.json();
 
-      setComicsData([...comicsData, ...data.data.results]);
-    };
-
-    fetchComicsData();
+        setComicsData((comicsData) => [...comicsData, ...data.data.results]);
+      };
+      fetchComicsData();
+    }
   }, [offset]);
 
   // load more function increments offset parameter for API call
